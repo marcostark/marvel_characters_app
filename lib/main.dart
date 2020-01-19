@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobx_sample_app/src/ui/home.dart';
+import 'package:mobx_sample_app/src/ui/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: Splash(),
     );
   }
 }
