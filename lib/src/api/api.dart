@@ -7,7 +7,7 @@ import 'package:mobx_sample_app/src/util/keys.dart';
 class Api {
   static Future<Character> getData(ts, hash) async {
     var url =
-        "https://gateway.marvel.com:443/v1/public/characters?limit=5&apikey=${Keys.PUBLIC}&ts=$ts&hash=$hash";
+        "https://gateway.marvel.com:443/v1/public/characters?limit=20&apikey=${Keys.PUBLIC}&ts=$ts&hash=$hash";
 
     print('Url => $url');
     try {
@@ -15,6 +15,7 @@ class Api {
 
       if (response.statusCode == 200) {
         var parsedJson = json.decode(response.body);
+        print("=> " + parsedJson.toString());
         return Character.fromJson(parsedJson);
       } else {
         throw Exception('Failed to load characters');
