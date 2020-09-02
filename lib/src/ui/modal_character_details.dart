@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:mobx_sample_app/src/model/result.dart';
 
-class CharacterDetails extends StatelessWidget {
-  final Result result;
-
-  CharacterDetails(this.result);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: _body(context, result)),
-    );
+class ModalCharacterDetails {
+  mainBottomSheet(BuildContext context, Result result) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+        ),
+        isScrollControlled: true,
+        context: context,
+        builder: (BuildContext context) {
+          return _body(context, result);
+        });
   }
 
   Widget _body(BuildContext context, Result article) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverToBoxAdapter(
-          child: _headerCharacter(context, article),
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.90,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _headerCharacter(context, article),
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,8 +66,8 @@ class CharacterDetails extends StatelessWidget {
               ],
             ),
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 
@@ -74,27 +75,18 @@ class CharacterDetails extends StatelessWidget {
     return Stack(
       alignment: Alignment.topCenter,
       children: [
-        FadeInImage.memoryNetwork(
-          placeholder: kTransparentImage,
-          image:
-              'https://sm.ign.com/ign_pt/screenshot/default/iron-man_derz.jpg',
-          fit: BoxFit.cover,
-        ),
         Container(
-            padding: EdgeInsets.only(left: 0, right: 10, bottom: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IconButton(
-                    icon: Icon(
-                      Icons.keyboard_backspace,
-                      color: Theme.of(context).backgroundColor,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    })
-              ],
-            ))
+          height: MediaQuery.of(context).size.height * 0.45,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(40.0),
+                topRight: Radius.circular(40.0),
+              ),
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      'https://sm.ign.com/ign_pt/screenshot/default/iron-man_derz.jpg'))),
+        ),
       ],
     );
   }

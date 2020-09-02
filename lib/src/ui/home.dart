@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_sample_app/src/model/character.dart';
 import 'package:mobx_sample_app/src/model/characters_list.dart';
 import 'package:mobx_sample_app/src/model/result.dart';
-import 'package:mobx_sample_app/src/ui/character_details.dart';
+import 'package:mobx_sample_app/src/ui/modal_character_details.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,6 +13,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final _charList = CharactersList();
+  ModalCharacterDetails modal = new ModalCharacterDetails();
 
   @override
   void initState() {
@@ -50,7 +51,6 @@ class _HomeState extends State<Home> {
                         ? ListView.builder(
                             itemCount: snapshot.data.data.results.length,
                             itemBuilder: (context, index) {
-//                          return HeroTileWidget(snapshot.data.data.results[index]);
                               return _buildCharacter(
                                   snapshot.data.data.results[index]);
                             },
@@ -67,8 +67,7 @@ class _HomeState extends State<Home> {
       padding: const EdgeInsets.all(12.0),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => CharacterDetails(result)));
+          modal.mainBottomSheet(context, result);
         },
         child: Container(
           child: Container(
