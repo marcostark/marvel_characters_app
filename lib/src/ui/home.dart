@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx_sample_app/src/model/character.dart';
+import 'package:mobx_sample_app/src/model/character_data_wrapper.dart';
 import 'package:mobx_sample_app/src/model/characters_list.dart';
-import 'package:mobx_sample_app/src/model/result.dart';
+import 'package:mobx_sample_app/src/model/character.dart';
 import 'package:mobx_sample_app/src/ui/modal_character_details.dart';
 
 class Home extends StatefulWidget {
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
         ),
         body: Observer(
           builder: (_) => (_charList.characters != null)
-              ? FutureBuilder<Character>(
+              ? FutureBuilder<CharacterDataWrapper>(
                   future: _charList.characters,
                   builder: (context, snapshot) {
                     print("snapshot is $snapshot");
@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
         ));
   }
 
-  Widget _buildCharacter(Result result) {
+  Widget _buildCharacter(Character result) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: InkWell(
@@ -77,10 +77,10 @@ class _HomeState extends State<Home> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.99),
-                    blurRadius: 20,
-                    spreadRadius: 3.5,
-                    offset: Offset(0, 13),
+                    color: Colors.grey.withOpacity(0.50),
+                    blurRadius: 15,
+                    spreadRadius: 0.5,
+                    offset: Offset(0, 8),
                   )
                 ]),
             child: Row(

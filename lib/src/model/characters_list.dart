@@ -4,7 +4,7 @@ import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart' as crypto;
 
 import 'package:http/http.dart' as http;
-import 'package:mobx_sample_app/src/model/character.dart';
+import 'package:mobx_sample_app/src/model/character_data_wrapper.dart';
 import 'package:mobx_sample_app/src/util/keys.dart';
 
 part 'characters_list.g.dart';
@@ -13,10 +13,10 @@ class CharactersList = CharacterBase with _$CharactersList;
 
 abstract class CharacterBase with Store {
   @observable
-  Future<Character> characters;
+  Future<CharacterDataWrapper> characters;
 
   @observable
-  int charactersLimit = 5;
+  int charactersLimit = 20;
 
   @action
   fetchData() {
@@ -33,7 +33,7 @@ abstract class CharacterBase with Store {
   }
 }
 
-Future<Character> getData(ts, hash) async {
+Future<CharacterDataWrapper> getData(ts, hash) async {
   var url =
       "https://gateway.marvel.com:443/v1/public/characters?limit=5&apikey=${Keys.PUBLIC}&ts=$ts&hash=$hash";
 
@@ -43,7 +43,7 @@ Future<Character> getData(ts, hash) async {
 
     if (response.statusCode == 200) {
       var parsedJson = json.decode(response.body);
-      return Character.fromJson(parsedJson);
+      return CharacterDataWrapper.fromJson(parsedJson);
     } else {
       throw Exception('Failed to load characters');
     }

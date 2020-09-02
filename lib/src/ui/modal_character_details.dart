@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mobx_sample_app/src/model/result.dart';
+import 'package:mobx_sample_app/src/model/character.dart';
 
 class ModalCharacterDetails {
-  mainBottomSheet(BuildContext context, Result result) {
+  mainBottomSheet(BuildContext context, Character result) {
     showModalBottomSheet(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+              topLeft: Radius.circular(30), topRight: Radius.circular(30)),
         ),
         isScrollControlled: true,
         context: context,
@@ -15,7 +15,7 @@ class ModalCharacterDetails {
         });
   }
 
-  Widget _body(BuildContext context, Result article) {
+  Widget _body(BuildContext context, Character article) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.90,
       child: Column(
@@ -71,7 +71,7 @@ class ModalCharacterDetails {
     );
   }
 
-  Widget _headerCharacter(BuildContext context, Result character) {
+  Widget _headerCharacter(BuildContext context, Character character) {
     return Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -79,8 +79,8 @@ class ModalCharacterDetails {
           height: MediaQuery.of(context).size.height * 0.45,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40.0),
-                topRight: Radius.circular(40.0),
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
               ),
               image: DecorationImage(
                   fit: BoxFit.cover,

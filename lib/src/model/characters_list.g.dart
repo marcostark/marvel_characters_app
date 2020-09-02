@@ -12,14 +12,14 @@ mixin _$CharactersList on CharacterBase, Store {
   final _$charactersAtom = Atom(name: 'CharacterBase.characters');
 
   @override
-  Future<Character> get characters {
+  Future<CharacterDataWrapper> get characters {
     _$charactersAtom.context.enforceReadPolicy(_$charactersAtom);
     _$charactersAtom.reportObserved();
     return super.characters;
   }
 
   @override
-  set characters(Future<Character> value) {
+  set characters(Future<CharacterDataWrapper> value) {
     _$charactersAtom.context.conditionallyRunInAction(() {
       super.characters = value;
       _$charactersAtom.reportChanged();

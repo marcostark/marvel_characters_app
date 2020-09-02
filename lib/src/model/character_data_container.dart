@@ -1,29 +1,30 @@
-import 'package:mobx_sample_app/src/model/result.dart';
+import 'package:mobx_sample_app/src/model/character.dart';
 
-class Data {
+class CharacterDataContainer {
   int offset;
   int limit;
   int total;
   int count;
-  List<Result> results;
+  List<Character> results;
 
-  Data({this.offset, this.limit, this.total, this.count, this.results});
+  CharacterDataContainer(
+      {this.offset, this.limit, this.total, this.count, this.results});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  CharacterDataContainer.fromJson(Map<String, dynamic> json) {
     offset = json['offset'];
     limit = json['limit'];
     total = json['total'];
     count = json['count'];
     if (json['results'] != null) {
-      results = new List<Result>();
+      results = List<Character>();
       json['results'].forEach((v) {
-        results.add(new Result.fromJson(v));
+        results.add(Character.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['offset'] = this.offset;
     data['limit'] = this.limit;
     data['total'] = this.total;
