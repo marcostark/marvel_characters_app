@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Marvel Heroes',
+      title: 'MARVEL',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
