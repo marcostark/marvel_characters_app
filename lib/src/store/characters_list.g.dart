@@ -12,14 +12,14 @@ mixin _$CharactersList on CharacterBase, Store {
   final _$charactersAtom = Atom(name: 'CharacterBase.characters');
 
   @override
-  Future<Character> get characters {
+  Future<CharacterDataWrapper> get characters {
     _$charactersAtom.context.enforceReadPolicy(_$charactersAtom);
     _$charactersAtom.reportObserved();
     return super.characters;
   }
 
   @override
-  set characters(Future<Character> value) {
+  set characters(Future<CharacterDataWrapper> value) {
     _$charactersAtom.context.conditionallyRunInAction(() {
       super.characters = value;
       _$charactersAtom.reportChanged();
@@ -27,21 +27,6 @@ mixin _$CharactersList on CharacterBase, Store {
   }
 
   final _$charactersLimitAtom = Atom(name: 'CharacterBase.charactersLimit');
-
-  @override
-  int get charactersLimit {
-    _$charactersLimitAtom.context.enforceReadPolicy(_$charactersLimitAtom);
-    _$charactersLimitAtom.reportObserved();
-    return super.charactersLimit;
-  }
-
-  @override
-  set charactersLimit(int value) {
-    _$charactersLimitAtom.context.conditionallyRunInAction(() {
-      super.charactersLimit = value;
-      _$charactersLimitAtom.reportChanged();
-    }, _$charactersLimitAtom, name: '${_$charactersLimitAtom.name}_set');
-  }
 
   final _$CharacterBaseActionController =
       ActionController(name: 'CharacterBase');

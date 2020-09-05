@@ -1,44 +1,29 @@
-import 'package:mobx_sample_app/src/model/data.dart';
+import 'package:mobx_sample_app/src/model/thumbnail.dart';
 
 class Character {
-  int code;
-  String status;
-  String copyright;
-  String attributionText;
-  String attributionHTML;
-  Data data;
-  String etag;
+  int id;
+  String name;
+  String description;
+  Thumbnail thumbnail;
 
-  Character(
-      {this.code,
-      this.status,
-      this.copyright,
-      this.attributionText,
-      this.attributionHTML,
-      this.data,
-      this.etag});
+  Character({this.id, this.name, this.description, this.thumbnail});
+
+  getImage() => '${this.thumbnail.path}.${this.thumbnail.extension}';
 
   Character.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    status = json['status'];
-    copyright = json['copyright'];
-    attributionText = json['attributionText'];
-    attributionHTML = json['attributionHTML'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-    etag = json['etag'];
+    id = json['id'];
+    name = json['name'];
+    description = json['description'];
+    thumbnail = json['thumbnail'] != null
+        ? new Thumbnail.fromJson(json['thumbnail'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['status'] = this.status;
-    data['copyright'] = this.copyright;
-    data['attributionText'] = this.attributionText;
-    data['attributionHTML'] = this.attributionHTML;
-    if (this.data != null) {
-      data['data'] = this.data.toJson();
-    }
-    data['etag'] = this.etag;
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['description'] = this.description;
     return data;
   }
 }
