@@ -1,4 +1,4 @@
-# MARVEL characters
+# MARVEL Characters App
 
 - A simple application that lists the characters using an official MARVEL api.
 
