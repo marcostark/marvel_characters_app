@@ -14,12 +14,12 @@ Design credit - [by Ruslan Riznyk](https://dribbble.com/shots/4985712-Marvel-Her
 ([Insta](https://www.instagram.com/mrstark.dev/))
 
 
-### Tasks
+### TODO
 
-[x] List of characters
-[x] Character details
-[] Infinite list
-[] Search for character by name
+- [x] List of characters
+- [x] Character details
+- [ ] Infinite list
+- [ ] Search for character by name
 
 ## Getting Started
 
