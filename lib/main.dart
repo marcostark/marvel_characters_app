@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobx_sample_app/src/ui/splash.dart';
+import 'package:mobx_sample_app/src/ui/pages/splash/splash.dart';
 
 void main() => runApp(MyApp());
 

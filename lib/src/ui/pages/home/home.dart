@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_sample_app/src/model/character_data_wrapper.dart';
-import 'package:mobx_sample_app/src/model/characters_list.dart';
+import 'package:mobx_sample_app/src/store/characters_list.dart';
 import 'package:mobx_sample_app/src/model/character.dart';
-import 'package:mobx_sample_app/src/ui/modal_character_details.dart';
+import 'package:mobx_sample_app/src/ui/pages/home/modal_character_details.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -62,12 +62,12 @@ class _HomeState extends State<Home> {
         ));
   }
 
-  Widget _buildCharacter(Character result) {
+  Widget _buildCharacter(Character character) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: InkWell(
         onTap: () {
-          modal.mainBottomSheet(context, result);
+          modal.mainBottomSheet(context, character);
         },
         child: Container(
           child: Container(
@@ -98,8 +98,7 @@ class _HomeState extends State<Home> {
                           ),
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(''
-                                  'https://sm.ign.com/ign_pt/screenshot/default/iron-man_derz.jpg'))),
+                              image: NetworkImage(character.getImage()))),
                     )),
                 Flexible(
                     flex: 5,
@@ -112,7 +111,7 @@ class _HomeState extends State<Home> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '${result.name}',
+                                  '${character.name}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
@@ -121,7 +120,7 @@ class _HomeState extends State<Home> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  '${result.name}',
+                                  '${character.name}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
@@ -133,7 +132,7 @@ class _HomeState extends State<Home> {
                                   height: 15,
                                 ),
                                 Text(
-                                  '${result.description}',
+                                  '${character.description}',
                                   maxLines: 4,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(

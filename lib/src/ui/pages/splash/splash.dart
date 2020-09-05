@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
-import 'home.dart';
+import '../home/home.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -21,7 +21,6 @@ class _SplashState extends State<Splash> {
               alignment: Alignment.center,
               fit: BoxFit.contain,
               animation: "loading"),
-          //child: Image.asset("assets/flutter.jpg"),
         ),
       ),
     );

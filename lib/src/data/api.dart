@@ -5,9 +5,9 @@ import 'package:mobx_sample_app/src/model/character_data_wrapper.dart';
 import 'package:mobx_sample_app/src/util/keys.dart';
 
 class Api {
-  static Future<CharacterDataWrapper> getData(ts, hash) async {
+  Future<CharacterDataWrapper> getData(ts, hash, {limit = 20}) async {
     var url =
-        "https://gateway.marvel.com:443/v1/public/characters?limit=20&apikey=${Keys.PUBLIC}&ts=$ts&hash=$hash";
+        "https://gateway.marvel.com:443/v1/public/characters?limit=$limit&apikey=${Keys.PUBLIC}&ts=$ts&hash=$hash";
 
     print('Url => $url');
     try {

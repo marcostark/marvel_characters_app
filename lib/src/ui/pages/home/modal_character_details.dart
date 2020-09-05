@@ -84,8 +84,7 @@ class ModalCharacterDetails {
               ),
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://sm.ign.com/ign_pt/screenshot/default/iron-man_derz.jpg'))),
+                  image: NetworkImage(character.getImage()))),
         ),
       ],
     );

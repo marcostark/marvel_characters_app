@@ -28,21 +28,6 @@ mixin _$CharactersList on CharacterBase, Store {
 
   final _$charactersLimitAtom = Atom(name: 'CharacterBase.charactersLimit');
 
-  @override
-  int get charactersLimit {
-    _$charactersLimitAtom.context.enforceReadPolicy(_$charactersLimitAtom);
-    _$charactersLimitAtom.reportObserved();
-    return super.charactersLimit;
-  }
-
-  @override
-  set charactersLimit(int value) {
-    _$charactersLimitAtom.context.conditionallyRunInAction(() {
-      super.charactersLimit = value;
-      _$charactersLimitAtom.reportChanged();
-    }, _$charactersLimitAtom, name: '${_$charactersLimitAtom.name}_set');
-  }
-
   final _$CharacterBaseActionController =
       ActionController(name: 'CharacterBase');
 

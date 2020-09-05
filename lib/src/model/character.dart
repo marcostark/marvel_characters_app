@@ -8,6 +8,8 @@ class Character {
 
   Character({this.id, this.name, this.description, this.thumbnail});
 
+  getImage() => '${this.thumbnail.path}.${this.thumbnail.extension}';
+
   Character.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
