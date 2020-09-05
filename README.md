@@ -1,6 +1,6 @@
 # MARVEL Characters App
 
-- A simple application that lists the characters using an official MARVEL api.
+- A simple application that lists the characters using an official (MARVEL API)[https://developer.marvel.com/].
 
 Design credit - [by Ruslan Riznyk](https://dribbble.com/shots/4985712-Marvel-Heroes-Library/attachments/1114938)
 
@@ -25,3 +25,5 @@ Design credit - [by Ruslan Riznyk](https://dribbble.com/shots/4985712-Marvel-Her
 
 For help getting started with Flutter, view our online
 [documentation](https://flutter.io/).
+
+(Data provided by Marvel. © 2014 Marvel)[https://developer.marvel.com/]

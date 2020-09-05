@@ -2,20 +2,19 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:mobx_sample_app/src/model/character_data_wrapper.dart';
+import 'package:mobx_sample_app/src/util/constants.dart';
 import 'package:mobx_sample_app/src/util/keys.dart';
 
 class Api {
   Future<CharacterDataWrapper> getData(ts, hash, {limit = 20}) async {
     var url =
-        "https://gateway.marvel.com:443/v1/public/characters?limit=$limit&apikey=${Keys.PUBLIC}&ts=$ts&hash=$hash";
+        "${Constants.BASE_URL}characters?limit=$limit&apikey=${Keys.PUBLIC}&ts=$ts&hash=$hash";
 
-    print('Url => $url');
     try {
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
         var parsedJson = json.decode(response.body);
-        print("=> " + parsedJson.toString());
         return CharacterDataWrapper.fromJson(parsedJson);
       } else {
         throw Exception('Failed to load characters');
